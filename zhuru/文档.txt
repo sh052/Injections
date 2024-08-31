@@ -1,0 +1,9 @@
+CreateRemoteThread 注入：使用 VirtualAllocEx 分配远程进程内存，WriteProcessMemory 将 DLL 路径写入目标进程，然后使用 CreateRemoteThread 创建线程调用 LoadLibraryA。
+
+SetWindowsHookEx 注入：通过设置 Windows API 的钩子来加载 DLL，例如通过 SetWindowsHookEx 绑定到目标进程的某个事件。
+
+AppInit_DLLs 注入：通过修改注册表的 AppInit_DLLs 键，所有加载用户32.dll 的应用程序都会加载指定的 DLL。
+
+NTCreateThreadEx 注入：使用更底层的 NtCreateThreadEx API 创建远程线程，而不是 CreateRemoteThread，此方法在某些情况下可能更有效。
+
+Reflective DLL 注入：将 DLL 自己反射到目标进程中，而不需要使用 LoadLibrary。
